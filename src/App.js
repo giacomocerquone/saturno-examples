@@ -1,25 +1,27 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import client from "./services/client";
 
 function App() {
-  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
+
+  const requestCat = async () => {
+    const stream = await client("images/search");
+    const data = await stream.json();
+
+    console.log(data);
+
+    // If there are no images, we don't crash and instead set undefined
+    setImage(data?.[0]?.url);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
-        <input
-          type="text"
-          placeholder="Inserisci il tuo nome"
-          onChange={(e) => {
-            setName(e.target.value.toUpperCase());
-          }}
-          value={name}
-        />
+        <button onClick={requestCat}>Request a random cat image</button>
 
-        <p>Il tuo nome modificato:</p>
-
-        <p>{name}</p>
+        {image && <img src={image} alt="my cat" width="100%" height="100%" />}
       </header>
     </div>
   );
