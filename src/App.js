@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect, useState } from "react";
 import client from "./services/client";
@@ -10,8 +9,9 @@ function App() {
 
   useEffect(() => {
     const fetchCat = async () => {
-      const stream = await client("images/search");
-      const data = await stream.json();
+      fetch({ method: "GET" });
+      const stream = await client.get("images/search");
+      const data = stream.data;
 
       if (data[0]) {
         setImage(data[0].url);
