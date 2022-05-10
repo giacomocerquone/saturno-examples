@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 function Cat() {
   const [image, setImage] = useState("");
   const [info, setInfo] = useState({});
+  // prendiamo una porzione del nostro stato 
+  // (ovvero dell'insieme dei reducer) e ascoltiamo il suo valore
   const token = useSelector((state) => state.user.jwt);
 
   useEffect(() => {

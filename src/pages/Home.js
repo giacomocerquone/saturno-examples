@@ -12,6 +12,7 @@ const Home = () => {
       <div>Home</div>
       <button
         onClick={() => {
+          // con questo richiamiamo il reducer "setToken" definito all'interno del file "reducers"
           dispatch(setToken("jwt12398012983019udjiasnhbfka"));
           navigate("/cat");
         }}

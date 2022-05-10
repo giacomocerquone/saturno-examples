@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import store from "./store";
 
 const App = () => {
+  // Con il provider forniamo lo store di Redux all'interno dell'applicazione
+  
   return (
     <Provider store={store}>
       <BrowserRouter>
